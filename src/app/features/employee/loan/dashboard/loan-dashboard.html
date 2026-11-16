@@ -1,0 +1,244 @@
+<div class="container-fluid dashboard-container">
+  <!-- ========================================= -->
+  <!-- PAGE HEADER -->
+  <!-- ========================================= -->
+
+  <div class="page-header mb-4">
+    <div>
+      <h3 class="page-title">
+        <i class="bi bi-cash-coin me-2 text-primary"></i>
+        Loan Management Dashboard
+      </h3>
+
+      <p class="page-subtitle">
+        Monitor loan applications, approvals, disbursements and outstanding loan amounts.
+      </p>
+    </div>
+
+    <div class="refresh-section">
+      <button class="btn btn-outline-primary btn-sm" (click)="refreshDashboard()">
+        <i class="bi bi-arrow-clockwise me-2"></i>
+
+        Refresh
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- KPI CARDS -->
+  <!-- ========================================= -->
+
+  <div class="alert alert-info" *ngIf="loading">
+    <i class="bi bi-arrow-repeat me-2"></i>
+    Loading dashboard...
+  </div>
+
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="row g-4">
+    <!-- Total Loans -->
+
+    <div class="col-xl-3 col-lg-6 col-md-6">
+      <div class="dashboard-card total-card">
+        <div class="card-icon">
+          <i class="bi bi-bank"></i>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">Total Loans</div>
+
+          <div class="card-value">
+            {{ dashboard?.totalLoans ?? 0 }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pending -->
+
+    <div class="col-xl-3 col-lg-6 col-md-6">
+      <div class="dashboard-card pending-card">
+        <div class="card-icon">
+          <i class="bi bi-hourglass-split"></i>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">Pending</div>
+
+          <div class="card-value">
+            {{ dashboard?.pendingLoans ?? 0 }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Approved -->
+
+    <div class="col-xl-3 col-lg-6 col-md-6">
+      <div class="dashboard-card approved-card">
+        <div class="card-icon">
+          <i class="bi bi-check-circle-fill"></i>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">Approved</div>
+
+          <div class="card-value">
+            {{ dashboard?.approvedLoans ?? 0 }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rejected -->
+
+    <div class="col-xl-3 col-lg-6 col-md-6">
+      <div class="dashboard-card rejected-card">
+        <div class="card-icon">
+          <i class="bi bi-x-circle-fill"></i>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">Rejected</div>
+
+          <div class="card-value">
+            {{ dashboard?.rejectedLoans ?? 0 }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- SECOND ROW -->
+  <!-- ========================================= -->
+
+  <div class="row g-4 mt-1">
+    <!-- Disbursed -->
+
+    <div class="col-xl-3 col-lg-6 col-md-6">
+      <div class="dashboard-card disbursed-card">
+        <div class="card-icon">
+          <i class="bi bi-cash-stack"></i>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">Disbursed</div>
+
+          <div class="card-value">
+            {{ dashboard?.disbursedLoans ?? 0 }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closed -->
+
+    <div class="col-xl-3 col-lg-6 col-md-6">
+      <div class="dashboard-card closed-card">
+        <div class="card-icon">
+          <i class="bi bi-lock-fill"></i>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">Closed</div>
+
+          <div class="card-value">
+            {{ dashboard?.closedLoans ?? 0 }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Requested -->
+
+    <div class="col-xl-3 col-lg-6 col-md-6">
+      <div class="dashboard-card requested-card">
+        <div class="card-icon">
+          <i class="bi bi-currency-rupee"></i>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">Requested Amount</div>
+
+          <div class="card-value amount">
+            {{ dashboard?.totalRequestedAmount ?? 0 | currency: 'INR' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outstanding -->
+
+    <div class="col-xl-3 col-lg-6 col-md-6">
+      <div class="dashboard-card outstanding-card">
+        <div class="card-icon">
+          <i class="bi bi-wallet2"></i>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">Outstanding</div>
+
+          <div class="card-value amount">
+            {{ dashboard?.outstandingAmount ?? 0 | currency: 'INR' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- CHARTS -->
+  <!-- ========================================= -->
+
+  <div class="row mt-4 g-4">
+    <div class="col-xl-8">
+      <div class="chart-card">
+        <div class="section-title">Loan Amount Summary</div>
+
+        <div class="chart-container">
+          <canvas id="amountChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4">
+      <div class="chart-card">
+        <div class="section-title">Loan Status</div>
+
+        <div class="chart-container">
+          <canvas id="statusChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- PENDING LOAN GRID -->
+  <!-- ========================================= -->
+
+  <div class="grid-card mt-4">
+    <div class="grid-header">
+      <div>
+        <h5>Pending Loan Applications</h5>
+      </div>
+
+      <button class="btn btn-primary btn-sm">View All</button>
+    </div>
+
+    <div class="ag-grid-placeholder">
+      <ag-grid-angular
+        class="ag-theme-alpine"
+        
+        [rowData]="pendingLoanApplications"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [gridOptions]="gridOptions"
+        (gridReady)="onGridReady($event)"
+      >
+      </ag-grid-angular>
+    </div>
+  </div>
+</div>

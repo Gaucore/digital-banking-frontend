@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="card shadow-sm deposit-card">
+    <div class="card-header bg-white border-bottom">
+      <h3 class="mb-1">Deposit Money</h3>
+      <small class="text-muted"> Deposit cash into an existing customer account. </small>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="depositForm" (ngSubmit)="save()">
+        <div class="row g-4">
+          <!-- Account -->
+          <div class="col-lg-6">
+            <label class="form-label"> Select Account </label>
+
+            <select class="form-select" formControlName="accountNumber">
+              <option value="">Select Account</option>
+
+              <option *ngFor="let account of accountList" [value]="account.accountNumber">
+                {{ account.accountNumber }}
+                -
+                {{ account.customerName }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Amount -->
+          <!-- <div class="col-lg-6">
+            <label class="form-label"> Deposit Amount </label>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="amount"
+              placeholder="Enter Deposit Amount"
+            />
+          </div> -->
+
+          <div class="col-lg-6">
+            <label class="form-label"> Deposit Amount</label>
+
+            <div class="input-group">
+              <span class="input-group-text"> ₹ </span>
+
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter Amount"
+                formControlName="amount"
+              />
+            </div>
+          </div>
+
+          <!-- Remarks -->
+          <div class="col-12">
+            <label class="form-label"> Remarks </label>
+
+            <textarea
+              rows="4"
+              class="form-control"
+              formControlName="remarks"
+              placeholder="Enter Remarks"
+            >
+            </textarea>
+          </div>
+        </div>
+
+        <div class="button-area">
+          <button class="btn btn-primary" type="submit">
+            <i class="bi bi-cash-stack me-2"></i>
+
+            Deposit Money
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

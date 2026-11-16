@@ -1,0 +1,51 @@
+.transaction-card {
+  border-radius: 16px;
+}
+
+.card-header {
+  padding: 22px 30px;
+  border-bottom: 1px solid #ececec;
+}
+
+.card-header h3 {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.card-body {
+  padding: 32px;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #343a40;
+}
+
+.form-control,
+.form-select {
+  height: 48px;
+  border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.15);
+}
+
+textarea.form-control {
+  height: 120px;
+  resize: none;
+}
+
+.input-group-text {
+  font-weight: 600;
+  background: #f8f9fa;
+}
+
+.btn-lg {
+  min-width: 220px;
+  height: 48px;
+  font-weight: 600;
+}

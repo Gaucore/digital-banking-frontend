@@ -1,0 +1,5 @@
+export interface WithdrawRequest {
+  accountNumber: string;
+  amount: number;
+  remarks: string;
+}

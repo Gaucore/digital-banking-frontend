@@ -1,0 +1,64 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.page-header h3 {
+  margin: 0;
+
+  font-size: 28px;
+  font-weight: 600;
+  color: #212529;
+}
+
+.page-subtitle {
+  margin-top: 4px;
+  margin-bottom: 0;
+
+  color: #6c757d;
+
+  font-size: 14px;
+}
+
+.card {
+  border: none;
+
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-control {
+  height: 45px;
+
+  border-radius: 8px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+
+  border-color: #0d6efd;
+}
+
+.btn {
+  height: 45px;
+
+  border-radius: 8px;
+
+  padding: 0 20px;
+
+  font-weight: 500;
+}
+
+.ag-theme-alpine {
+  width: 100%;
+
+  height: 550px;
+
+  margin-top: 10px;
+}

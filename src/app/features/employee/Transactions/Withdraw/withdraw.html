@@ -1,0 +1,82 @@
+<div class="container-fluid py-4">
+  <div class="card shadow-sm border-0 transaction-card">
+    <!-- Header -->
+
+    <div class="card-header bg-white">
+      <h3 class="mb-1">Withdraw Money</h3>
+      <p class="text-muted mb-0">Withdraw cash from customer's bank account.</p>
+    </div>
+
+    <!-- Body -->
+
+    <div class="card-body">
+      <form [formGroup]="withdrawForm" (ngSubmit)="save()">
+        <div class="row">
+          <!-- Account -->
+
+          <div class="col-lg-6 mb-4">
+            <label class="form-label"> Select Account </label>
+
+            <select class="form-select" formControlName="accountNumber">
+              <option value="">Select Account</option>
+
+              <option *ngFor="let account of accountList" [value]="account.accountNumber">
+                {{ account.accountNumber }} -
+                {{ account.customerName }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Amount -->
+
+          <!-- <div class="col-lg-6 mb-4">
+            <label class="form-label"> Withdraw Amount </label>
+
+            <input
+              type="number"
+              class="form-control"
+              formControlName="amount"
+              placeholder="Enter amount"
+            />
+          </div> -->
+
+          <div class="col-lg-6">
+            <label class="form-label">  Withdraw Amount</label>
+
+            <div class="input-group">
+              <span class="input-group-text"> ₹ </span>
+
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter Amount"
+                formControlName="amount"
+              />
+            </div>
+          </div>
+
+          <!-- Remarks -->
+
+          <div class="col-12 mb-4">
+            <label class="form-label"> Remarks </label>
+
+            <textarea
+              rows="4"
+              class="form-control"
+              formControlName="remarks"
+              placeholder="Cash Withdraw"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-start">
+          <button class="btn btn-danger px-4 py-2" type="submit">
+            <i class="bi bi-wallet2 me-2"></i>
+
+            Withdraw Money
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

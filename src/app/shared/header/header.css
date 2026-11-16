@@ -1,0 +1,59 @@
+.header {
+  height: 70px;
+  background: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 25px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  z-index: 100;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-icon {
+  font-size: 34px;
+  color: #0d6efd;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.sub-title {
+  color: #6c757d;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.user-info i {
+  font-size: 22px;
+  color: #0d6efd;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

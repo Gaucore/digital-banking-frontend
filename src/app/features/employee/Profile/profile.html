@@ -1,0 +1,85 @@
+<div class="profile-page">
+  <div class="profile-header shadow-sm">
+    <div class="avatar">
+      {{ employee.fullName ? employee.fullName.charAt(0) : '' }}
+    </div>
+
+    <div>
+      <h2>{{ employee.fullName }}</h2>
+
+      <p>{{ employee.designation }}</p>
+
+      <span class="badge bg-success">
+        {{ employee.status }}
+      </span>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-6">
+      <div class="card profile-card">
+        <div class="card-header">Personal Information</div>
+
+        <div class="card-body">
+          <div class="info-row">
+            <span>Employee Code</span>
+            <strong>{{ employee.employeeCode }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Email</span>
+            <strong>{{ employee.email }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Mobile</span>
+            <strong>{{ employee.mobileNumber }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Address</span>
+            <strong>{{ employee.address }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Branch</span>
+            <strong>{{ employee.branch }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card profile-card">
+        <div class="card-header">Employment Details</div>
+
+        <div class="card-body">
+          <div class="info-row">
+            <span>Designation</span>
+            <strong>{{ employee.designation }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Joining Date</span>
+            <strong>{{ employee.joiningDate }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Salary</span>
+            <strong>₹ {{ employee.salary }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Username</span>
+            <strong>{{ employee.username }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Role</span>
+            <strong>{{ employee.role }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

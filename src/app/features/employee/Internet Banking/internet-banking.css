@@ -1,0 +1,81 @@
+.container-fluid {
+  padding: 20px;
+}
+
+.banking-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.banking-card .card-header {
+  padding: 18px 24px;
+  background: #fff;
+}
+
+.banking-card .card-body {
+  padding: 30px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.text-muted {
+  font-size: 14px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.form-control,
+.form-select {
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  transition: 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.btn-primary {
+  min-width: 240px;
+  height: 48px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+}
+
+.text-danger {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+hr {
+  margin: 10px 0 25px;
+}
+
+@media (max-width: 768px) {
+  .banking-card .card-body {
+    padding: 20px;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}

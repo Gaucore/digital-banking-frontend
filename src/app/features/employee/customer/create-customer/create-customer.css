@@ -1,0 +1,50 @@
+.card {
+  border: none;
+  border-radius: 12px;
+}
+
+.card-header {
+  background: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+.form-control,
+.form-select {
+  height: 45px;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.btn {
+  min-width: 140px;
+}
+
+
+.form-control.ng-invalid.ng-touched,
+.form-select.ng-invalid.ng-touched {
+    border-color: #dc3545;
+}
+
+.form-control.ng-valid.ng-touched,
+.form-select.ng-valid.ng-touched {
+    border-color: #198754;
+}
+
+.text-danger{
+    font-size:13px;
+}
+
+.card-header h4{
+    margin:0;
+    font-weight:600;
+}
+
+button{
+    min-width:140px;
+}

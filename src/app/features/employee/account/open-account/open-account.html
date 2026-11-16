@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="card shadow-sm deposit-card">
+    <!-- Card Header -->
+    <div class="card-header bg-white border-bottom">
+      <h3 class="mb-1">Open Account</h3>
+      <small class="text-muted"> Open a new bank account for an existing customer. </small>
+    </div>
+
+    <!-- Card Body -->
+    <div class="card-body">
+      <form [formGroup]="accountForm" (ngSubmit)="save()">
+        <div class="row">
+          <!-- Customer -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold"> Select Customer </label>
+
+            <select class="form-select" formControlName="customerCode">
+              <option value="">Select Customer</option>
+
+              <option *ngFor="let customer of customerList" [value]="customer.customerCode">
+                {{ customer.customerCode }} - {{ customer.firstName }}
+                {{ customer.lastName }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Account Type -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold"> Account Type </label>
+
+            <select class="form-select" formControlName="accountType">
+              <option value="">Select Account Type</option>
+              <option value="SAVINGS">Savings Account</option>
+              <option value="CURRENT">Current Account</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-3">
+          <button type="submit" class="btn btn-primary px-4" [disabled]="loading">
+            <i class="bi bi-bank me-2"></i>
+
+            {{ loading ? 'Opening...' : 'Open Account' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
